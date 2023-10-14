@@ -35,6 +35,15 @@ body {
   gap: 1rem;
 }
 
+.main * {
+  outline: none;
+  border: 2px solid transparent;
+}
+
+.main *:is(:focus, :focus-visible) {
+  border-color: var(--secondary);
+}
+
 /* -----------------------------------------------------------------------------
 */
 
@@ -64,7 +73,6 @@ body {
 
   padding: 1rem;
   
-  border: none;
   border-radius: 1rem;
 
   font-family: var(--font);
@@ -103,4 +111,55 @@ body {
   padding: 1.5rem;
 
   border-radius: 2rem;
+}
+
+.data-section > div > .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data-section > div > .section-header > h2 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.data-section > div.active > .section-header > svg {
+  transform: rotate(180deg);
+}
+
+.data-section > div > form {
+
+  margin-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  gap: 1rem;
+}
+
+.data-section label {
+  display: inline-block;
+
+  font-weight: bold;
+  text-transform: uppercase;
+
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.data-section input {
+  width: 100%;
+
+  padding: 0.5rem;
+
+  outline: none;
+  border: 2px solid transparent;
+
+  border-radius: 0.5rem;
+}
+
+.data-section input:is(:active, :focus) {
+  border-color: var(--secondary);
 }
