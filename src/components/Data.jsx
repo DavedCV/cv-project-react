@@ -2,62 +2,59 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 import { useState } from "react";
-import { faChevronDown, faDisplay } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faDisplay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const PERSONAL_DATA = ["full name", "email", "phone number", "location"];
-const EDUCATION = ["school name", "degree", "start date", "end date"];
-const EXPERIENCE = [
-  "company name",
-  "start date",
-  "end date",
-  "job description",
-];
+const formsData = {
+  personal: ["full name", "email", "phone number", "location"],
+  education: ["school name", "degree", "start date", "end date"],
+  experience: ["company name", "start date", "end date", "job description"],
+};
 
 export default function Data() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeForm, setActiveForm] = useState("personal");
+  const [dataSectionHeight, setDataSectionHeight] = useState(null);
+
+  function calcHeight(el) {
+    console.log("calc");
+    const height = el.offsetHeight;
+    setDataSectionHeight(height);
+  }
+
+  function getNextForm() {
+    const keys = Object.keys(formsData);
+    const currentIndex = keys.indexOf(activeForm);
+    return keys[(currentIndex + 1) % keys.length];
+  }
 
   return (
     <div className="data-section">
-      <Section
-        className="personal"
-        data={PERSONAL_DATA}
-        isActive={activeIndex == 0}
-        toggle={() => setActiveIndex(0)}
-      />
-      <Section
-        className="education"
-        data={EDUCATION}
-        isActive={activeIndex == 1}
-        toggle={() => setActiveIndex(1)}
-      />
-      <Section
-        className="experience"
-        data={EXPERIENCE}
-        isActive={activeIndex == 2}
-        toggle={() => setActiveIndex(2)}
-      />
+      <div className="data-section-header">
+        <h2>{activeForm}</h2>
+
+        <button onClick={() => setActiveForm(getNextForm())}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </button>
+      </div>
+
+      <TransitionGroup>
+        <CSSTransition key={activeForm} timeout={500} classNames="form">
+          <Section data={formsData[activeForm]} />
+        </CSSTransition>
+      </TransitionGroup>
     </div>
   );
 }
 
-function Section({ className, data, isActive, toggle }) {
+function Section({ data }) {
   return (
-    <div
-      className={`${className} ${isActive ? "active" : ""}`}
-      onClick={toggle}
-      onKeyUp={toggle}
-      tabIndex={0}
-    >
-      <div className="section-header">
-        <h2>{className}</h2>
-        <FontAwesomeIcon icon={faChevronDown} />
-      </div>
-      <form style={{ display: isActive ? "flex" : "none" }}>
+    <div className="form-section">
+      <form>
         {data.map((info) => (
           <div key={info} className={`${info}-entry`}>
             <label htmlFor={info}>{info}</label>
-            <input type="text" id={info} />
+            <input type="text" id={info} placeholder={`enter ${info}`}/>
           </div>
         ))}
       </form>
