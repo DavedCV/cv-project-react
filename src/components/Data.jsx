@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import { useState } from "react";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faDisplay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PERSONAL_DATA = ["full name", "email", "phone number", "location"];
@@ -41,18 +42,18 @@ export default function Data() {
 }
 
 function Section({ className, data, isActive, toggle }) {
-  return isActive ? (
+  return (
     <div
-      className={`${className} active`}
-      onClick={toggle()}
-      onKeyUp={toggle()}
+      className={`${className} ${isActive ? "active" : ""}`}
+      onClick={toggle}
+      onKeyUp={toggle}
       tabIndex={0}
     >
       <div className="section-header">
         <h2>{className}</h2>
         <FontAwesomeIcon icon={faChevronDown} />
       </div>
-      <form>
+      <form style={{ display: isActive ? "flex" : "none" }}>
         {data.map((info) => (
           <div key={info} className={`${info}-entry`}>
             <label htmlFor={info}>{info}</label>
@@ -60,13 +61,6 @@ function Section({ className, data, isActive, toggle }) {
           </div>
         ))}
       </form>
-    </div>
-  ) : (
-    <div className={className} onClick={toggle} onKeyUp={toggle} tabIndex={0}>
-      <div className="section-header">
-        <h2>{className}</h2>
-        <FontAwesomeIcon icon={faChevronDown} />
-      </div>
     </div>
   );
 }
