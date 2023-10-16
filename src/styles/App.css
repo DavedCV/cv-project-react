@@ -101,7 +101,7 @@ body {
 /* -----------------------------------------------------------------------------
 */
 
-.data-section {
+.details-section {
   background-color: var(--primary);
   border-radius: 2rem;
   padding: 2rem;
@@ -117,18 +117,19 @@ body {
   box-shadow: 0 0 1rem var(--primary);
 }
 
-.data-section>.data-section-header {
+/* Details section header */
+.details-section>.details-section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.data-section>.data-section-header>h2 {
+.details-section>.details-section-header>h2 {
   margin: 0;
   text-transform: uppercase;
 }
 
-.data-section>.data-section-header>button {
+.details-section>.details-section-header>button {
   background-color: transparent;
   color: white;
 
@@ -146,22 +147,80 @@ body {
   align-items: center;
 }
 
-.data-section > .form-section {
-  width: 100%;
+/* Details data */
+
+.details-section>.details-data-wrapper {
+  height: auto;
+
+  transition: height 500ms ease;
 }
 
-.data-section>.form-section>form {
-
-  margin-top: 1rem;
+.details-section .details-data {
+  width: 100%;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  align-items: center;
 
   gap: 1rem;
 }
 
-.data-section label {
+.details-data>button,
+.details-data form>button {
+  padding: 0.5rem;
+
+  border-radius: 0.5rem;
+
+  color: var(--primary);
+
+  font-weight: bold;
+}
+
+.details-data>.entry-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  width: 100%;
+
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--secondary);
+}
+
+.entry-data>.data-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.entry-data>.data-wrapper>div {
+  text-align: start;
+}
+
+.entry-data>.data-wrapper span {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.details-data>.form-data {
+  width: 100%;
+}
+
+.details-data>.form-data>form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.form-data label {
   display: inline-block;
 
   font-weight: bold;
@@ -171,7 +230,7 @@ body {
   width: 100%;
 }
 
-.data-section input {
+.form-data input {
   width: 100%;
 
   padding: 0.5rem;
@@ -182,33 +241,34 @@ body {
   border-radius: 0.5rem;
 }
 
-.data-section input::placeholder {
+.form-data input::placeholder {
   color: var(--secondary);
   text-transform: capitalize;
 }
 
-.data-section input:is(:active, :focus) {
+.form-data input:is(:active, :focus) {
   border-color: var(--secondary);
 }
 
 /* CSS Transition classes */
-.form-section.form-enter {
+.details-data.details-enter {
   transform: translateX(120%);
 }
 
-.form-section.form-enter-active {
+.details-data.details-enter-active {
   transform: translateX(0%);
   transition: all 500ms ease;
 }
 
-.form-section.form-exit {
+.details-data.details-exit {
+  opacity: 0;
   position: absolute;
   left: 2rem;
   bottom: 2rem;
   right: 2rem;
 }
 
-.form-section.form-exit-active {
+.details-data.details-exit-active {
   transform: translateX(-120%);
   transition: all 500ms ease;
 }

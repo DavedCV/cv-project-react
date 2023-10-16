@@ -1,13 +1,20 @@
 import Configuration from "./components/Configuration";
-import Data from "./components/Data";
+import Details from "./components/Details";
 import Curriculum from "./components/Curriculum";
-import "./styles/App.css"
+import "./styles/App.css";
+import { useState } from "react";
 
 export default function App() {
+  const [sectionsData, setSectionsData] = useState({
+    personal: [],
+    education: [],
+    experience: [],
+  });
+
   return (
     <div className="main">
       <Configuration />
-      <Data />
+      <Details sectionsData={sectionsData} setSectionsData={setSectionsData} />
       <Curriculum />
     </div>
   );
