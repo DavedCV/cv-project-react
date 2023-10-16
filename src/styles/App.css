@@ -71,7 +71,7 @@ body {
   background-color: white;
   color: var(--primary);
 
-  padding: 1rem;
+  padding: calc(0.5rem + 2%);
 
   border-radius: 1rem;
 
@@ -104,7 +104,7 @@ body {
 .details-section {
   background-color: var(--primary);
   border-radius: 2rem;
-  padding: 2rem;
+  padding: calc(0.5rem + 5%);
 
   width: 100%;
 
@@ -161,7 +161,7 @@ body {
 
 .details-data>button,
 .details-data form>button {
-  padding: 0.5rem;
+  padding: calc(0.2rem + 1%);
 
   border-radius: 0.5rem;
 
@@ -235,6 +235,7 @@ body {
 
 .form-data input {
   width: 100%;
+  color: var(--primary);
 
   padding: 0.5rem;
 

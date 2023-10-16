@@ -1,4 +1,4 @@
-import Configuration from "./components/ConfigurationSection/Configuration";
+import ConfigurationButtons from "./components/ConfigurationButtons";
 import Details from "./components/DetailsSection/Details";
 import Curriculum from "./components/Curriculum";
 import "./styles/App.css";
@@ -10,11 +10,20 @@ export default function App() {
     education: [],
     experience: [],
   });
+  const [activeSection, setActiveSection] = useState("content");
 
   return (
     <div className="main">
-      <Configuration />
-      <Details sectionsData={sectionsData} setSectionsData={setSectionsData} />
+      <ConfigurationButtons
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+      />
+      {activeSection === "content" ? (
+        <Details
+          sectionsData={sectionsData}
+          setSectionsData={setSectionsData}
+        />
+      ) : null}
       <Curriculum />
     </div>
   );
