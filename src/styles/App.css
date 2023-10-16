@@ -149,12 +149,6 @@ body {
 
 /* Details data */
 
-.details-section>.details-data-wrapper {
-  height: auto;
-
-  transition: height 500ms ease;
-}
-
 .details-section .details-data {
   width: 100%;
 
@@ -186,6 +180,15 @@ body {
 
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--secondary);
+}
+
+.entry-data>.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 0.5rem;
+
 }
 
 .entry-data>.data-wrapper {

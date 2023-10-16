@@ -2,10 +2,15 @@ import { useState } from "react";
 import Form from "./Form";
 import EntryData from "./EntryData";
 
-export default function DetailsData({ activeSection, sectionsData, setSectionsData }) {
+export default function DetailsData({
+  activeSection,
+  sectionsData,
+  setSectionsData,
+}) {
   const [showForm, setShowForm] = useState(false);
+  const [isEditing, setIsEditing] = useState(null);
 
-  function saveData(e, changes) {
+  function saveData(e, data, changes) {
     e.preventDefault();
 
     if (changes == 0) {
@@ -13,15 +18,17 @@ export default function DetailsData({ activeSection, sectionsData, setSectionsDa
       return;
     }
 
-    const formData = new FormData(e.target);
-    const obj = Object.fromEntries(formData.entries());
+    const activeSectionData =
+      activeSection == "personal"
+        ? [data]
+        : [...sectionsData[activeSection], data];
 
-    console.log(obj);
-    changes;
     const newSectionsData = {
       ...sectionsData,
-      [activeSection]: [...sectionsData[activeSection], obj],
+      [activeSection]: activeSectionData,
     };
+
+    console.log(newSectionsData);
 
     setSectionsData(newSectionsData);
 
@@ -40,15 +47,28 @@ export default function DetailsData({ activeSection, sectionsData, setSectionsDa
     setSectionsData(newSectionData);
   }
 
+  function editData(data) {
+    setShowForm(true);
+    setIsEditing(data);
+  }
+
   return (
     <div className="details-data">
       {activeSection === "personal" || showForm ? (
-        <Form activeSection={activeSection} saveData={saveData} />
+        <Form
+          activeSection={activeSection}
+          saveData={saveData}
+          entriesData={isEditing ? isEditing : sectionsData[activeSection][0]}
+        />
       ) : (
         <>
           {sectionsData[activeSection].map((data) => (
             // eslint-disable-next-line react/jsx-key
-            <EntryData data={data} removeData={removeData} />
+            <EntryData
+              data={data}
+              removeData={removeData}
+              editData={editData}
+            />
           ))}
           <button onClick={() => setShowForm(!showForm)}>Add new data</button>
         </>

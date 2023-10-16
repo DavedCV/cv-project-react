@@ -1,4 +1,4 @@
-import Configuration from "./components/Configuration";
+import Configuration from "./components/ConfigurationSection/Configuration";
 import Details from "./components/DetailsSection/Details";
 import Curriculum from "./components/Curriculum";
 import "./styles/App.css";

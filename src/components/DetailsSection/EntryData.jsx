@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
-export default function EntryData({ data, removeData }) {
+export default function EntryData({ data, removeData, editData }) {
   return (
     <div className="entry-data">
       <div className="data-wrapper">
@@ -13,7 +13,10 @@ export default function EntryData({ data, removeData }) {
           </div>
         ))}
       </div>
-      <FontAwesomeIcon icon={faTrash} onClick={() => removeData(data)} />
+      <div className="logo-wrapper">
+        <FontAwesomeIcon icon={faTrash} onClick={() => removeData(data)} />
+        <FontAwesomeIcon icon={faPenToSquare} onClick={() => editData(data)} />
+      </div>
     </div>
   );
 }

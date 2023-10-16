@@ -1,12 +1,19 @@
+import { useState } from "react";
 import formsEntries from "./formEntriesData";
 
-export default function Form({ activeSection, saveData }) {
+export default function Form({ activeSection, saveData, entriesData }) {
   const data = formsEntries[activeSection];
-  let changes = 0;
+  const [changes, setChanges] = useState(0);
+  const [entriesDataCopy, setEntriesDataCopy] = useState({ ...entriesData });
+
+  function onChangeHandle(e, info) {
+    setChanges(changes + 1);
+    setEntriesDataCopy({ ...entriesDataCopy, [info]: e.target.value });
+  }
 
   return (
     <div className="form-data">
-      <form onSubmit={(e) => saveData(e, changes)}>
+      <form onSubmit={(e) => saveData(e, entriesDataCopy, changes)}>
         {data.map((info) => (
           <div
             key={info}
@@ -19,7 +26,8 @@ export default function Form({ activeSection, saveData }) {
               id={info}
               placeholder={`enter ${info}`}
               name={info}
-              onChange={() => (changes += 1)}
+              onChange={(e) => onChangeHandle(e, info)}
+              value={entriesDataCopy[info] ?? ""}
             />
           </div>
         ))}

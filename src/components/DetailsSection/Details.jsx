@@ -1,9 +1,20 @@
 import { useState } from "react";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faUserGraduate,
+  faBriefcase,
+  faPerson,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import DetailsData from "./DetailsData";
 import formsEntries from "./formEntriesData";
+
+const sectionLogo = {
+  education: <FontAwesomeIcon icon={faUserGraduate} />,
+  experience: <FontAwesomeIcon icon={faBriefcase} />,
+  personal: <FontAwesomeIcon icon={faPerson} />,
+};
 
 export default function Details({ sectionsData, setSectionsData }) {
   const [activeSection, setActiveSection] = useState("personal");
@@ -17,7 +28,7 @@ export default function Details({ sectionsData, setSectionsData }) {
   return (
     <div className="details-section">
       <div className="details-section-header">
-        <h2>{activeSection}</h2>
+        <h2>{sectionLogo[activeSection]} {activeSection}</h2>
         <button onClick={() => setActiveSection(getNextSection())}>
           <FontAwesomeIcon icon={faArrowRight} />
         </button>
