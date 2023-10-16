@@ -21,14 +21,23 @@ export default function Form({ activeSection, saveData, entriesData }) {
             style={{ width: 100 + "%" }}
           >
             <label htmlFor={info}>{info}</label>
-            <input
-              type="text"
-              id={info}
-              placeholder={`enter ${info}`}
-              name={info}
-              onChange={(e) => onChangeHandle(e, info)}
-              value={entriesDataCopy[info] ?? ""}
-            />
+            {info == "personal statement" ? (
+              <textarea
+                name={info}
+                id={info}
+                placeholder={`enter ${info}`}
+                value={entriesDataCopy[info] ?? ""}
+              ></textarea>
+            ) : (
+              <input
+                type="text"
+                id={info}
+                placeholder={`enter ${info}`}
+                name={info}
+                onChange={(e) => onChangeHandle(e, info)}
+                value={entriesDataCopy[info] ?? ""}
+              />
+            )}
           </div>
         ))}
         <button type="submit">Save info</button>
