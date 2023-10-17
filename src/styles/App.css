@@ -353,7 +353,8 @@ body {
 }
 
 /* cv experience info */
-.curriculum .experience-info .experience-cv {
+.curriculum .experience-info .experience-cv,
+.curriculum .education-info .education-cv {
   display: grid;
   grid-template-columns: 20% 80%;
   place-items: stretch;
@@ -362,15 +363,18 @@ body {
   gap: 1rem;
 }
 
-.experience-cv .job-date-cv {
+.experience-cv .job-date-cv,
+.education-cv .education-date-cv {
   font-weight: bold;
   text-transform: capitalize;
 }
 
-.experience-cv .job-date-cv > * {
+.experience-cv .job-date-cv > *,
+.education-cv .education-date-cv > * {
   margin: 0;
 }
 
-.experience-cv .job-details-cv  > *{
+.experience-cv .job-details-cv  > *,
+.education-cv .education-details-cv > *{
   margin: 0;
 }
