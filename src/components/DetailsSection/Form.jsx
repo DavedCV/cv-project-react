@@ -27,6 +27,7 @@ export default function Form({ activeSection, saveData, entriesData }) {
                 id={info}
                 placeholder={`enter ${info}`}
                 value={entriesDataCopy[info] ?? ""}
+                onChange={(e) => onChangeHandle(e, info)}
               ></textarea>
             ) : (
               <input

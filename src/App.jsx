@@ -1,6 +1,6 @@
 import ConfigurationButtons from "./components/ConfigurationButtons";
 import Details from "./components/DetailsSection/Details";
-import Curriculum from "./components/Curriculum";
+import CurriculumPreview from "./components/CVSection/CurriculumPreview";
 import "./styles/App.css";
 import { useState } from "react";
 
@@ -23,8 +23,9 @@ export default function App() {
           sectionsData={sectionsData}
           setSectionsData={setSectionsData}
         />
-      ) : null}
-      <Curriculum />
+      ) : (
+        <CurriculumPreview sectionsData={sectionsData} />
+      )}
     </div>
   );
 }

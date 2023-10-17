@@ -148,7 +148,6 @@ body {
 }
 
 /* Details data */
-
 .details-section .details-data {
   width: 100%;
 
@@ -283,4 +282,56 @@ body {
 .details-data.details-exit-active {
   transform: translateX(-120%);
   transition: all 500ms ease;
+}
+
+/* -----------------------------------------------------------------------------
+*/
+
+.curriculum-preview {
+  box-sizing: content-box;
+
+  aspect-ratio: 1 / 1.5;
+
+  max-width: 300px;
+
+  border: 1px solid var(--primary);
+
+  position: relative;
+}
+
+.curriculum-preview:hover {
+  border: 3px solid var(--primary);
+}
+
+
+.curriculum-preview > .curriculum {
+  scale: 0.375;
+
+  transform-origin: top left;
+}
+
+.curriculum {
+  background-color: white;
+  padding: 1rem;
+  width: 800px;
+}
+
+.curriculum .personal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.personal-info h1,
+.personal-info p {
+  margin: 0;
+}
+
+.personal-info div p {
+  margin: 0.5rem 0;
+}
+
+.personal-info p span{
+  font-weight: bold;
+  text-transform: capitalize;
 }
