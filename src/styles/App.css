@@ -326,6 +326,19 @@ body {
   transform-origin: top left;
 }
 
+.curriculum-preview .button-preview {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-family: var(--font);
+  color: white;
+  background-color: var(--primary);
+
+  border-radius: 1rem;
+}
 
 /* cv structure */
 .curriculum {
@@ -397,4 +410,32 @@ body {
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+/*------------------------------------------------------------------------------ 
+*/
+
+/* Modal */
+
+.curriculum-modal {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.curriculum-modal:empty {
+  display: none;
+}
+
+.curriculum-modal > div {
+  max-width: 80%;
+  max-height: 80%;
+
+  overflow-y: auto;
+  overflow-x: scroll;
 }
