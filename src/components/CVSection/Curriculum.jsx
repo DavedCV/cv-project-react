@@ -2,14 +2,17 @@ import PersonalInformation from "./PersonalInformation";
 import Experience from "./Experience";
 import Education from "./Education";
 
-export default function Curriculum({ sectionsData }) {
+export default function Curriculum({ sectionsData, scale }) {
   const personalData = sectionsData["personal"][0] ?? [];
   const education = sectionsData["education"] ?? [];
   const experience = sectionsData["experience"] ?? [];
   const skills = sectionsData["skills"] ?? [];
 
   return (
-    <div className="curriculum">
+    <div
+      className="curriculum"
+      style={{ transform: scale ? `scale(${scale})` : "scale(1)" }}
+    >
       <PersonalInformation personalData={personalData} />
       <SectionDivider text="Profesional Experience" />
       <Experience experience={experience} />
