@@ -6,7 +6,7 @@ export default function EntryData({ data, removeData, editData }) {
     <div className="entry-data">
       <div className="data-wrapper">
         {Object.entries(data)
-          .filter((info) => info[0] != "id")
+          .filter((info) => info[0] != "id" && info[0] != "personal statement")
           .map((info) => (
             // eslint-disable-next-line react/jsx-key
             <div>

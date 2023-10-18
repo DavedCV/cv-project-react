@@ -22,12 +22,15 @@ body {
   width: 100vw;
   height: 100vh;
 
+  overflow-x: hidden;
+
   font-family: var(--font);
 }
 
 .main {
   max-width: 80%;
   margin: 0 auto;
+  max-height: 80%;
 
   padding: 2rem;
 
@@ -42,15 +45,6 @@ body {
 
 .main *:is(:focus, :focus-visible) {
   border-color: var(--secondary);
-}
-
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 100%;
-  width: 100%;
 }
 
 /* -----------------------------------------------------------------------------
@@ -218,7 +212,7 @@ body {
   text-align: center;
   gap: 0.5rem;
 
-  overflow: scroll;
+  overflow-x: auto;
 }
 
 .entry-data>.data-wrapper>div {
@@ -319,7 +313,8 @@ body {
   width: clamp(180px, 60%, 280px);
 
   background-color: white;
-  border: 1px solid var(--primary);
+  border: 3px solid transparent;
+  box-shadow: 0 0 10px var(--primary);
 
   position: relative;
 
@@ -447,5 +442,5 @@ body {
   max-height: 80%;
 
   overflow-y: auto;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
