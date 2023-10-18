@@ -4,6 +4,7 @@ import {
   faUserGraduate,
   faBriefcase,
   faPerson,
+  faLightbulb
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -14,6 +15,7 @@ const sectionLogo = {
   education: <FontAwesomeIcon icon={faUserGraduate} />,
   experience: <FontAwesomeIcon icon={faBriefcase} />,
   personal: <FontAwesomeIcon icon={faPerson} />,
+  skills: <FontAwesomeIcon icon={faLightbulb} />
 };
 
 export default function Details({ sectionsData, setSectionsData }) {

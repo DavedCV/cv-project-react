@@ -16,6 +16,7 @@ const formsEntries = {
     "end date",
     "job description",
   ],
+  skills: ["skill"]
 };
 
 export default formsEntries;

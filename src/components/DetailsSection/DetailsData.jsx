@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Form from "./Form";
 import EntryData from "./EntryData";
+import { v4 as uuidv4 } from "uuid";
 
 export default function DetailsData({
   activeSection,
@@ -15,29 +16,38 @@ export default function DetailsData({
 
     if (changes == 0) {
       if (setShowForm) setShowForm(false);
+      if (isEditing) setIsEditing(null);
       return;
     }
 
+    let prevData = isEditing
+      ? sectionsData[activeSection].filter((prev) => prev.id != data.id)
+      : sectionsData[activeSection];
+
+    if (!isEditing) {
+      data["id"] = uuidv4();
+    } else {
+      setIsEditing(null);
+    }
+
     const activeSectionData =
-      activeSection == "personal"
-        ? [data]
-        : [...sectionsData[activeSection], data];
+      activeSection == "personal" ? [data] : [...prevData, data];
 
     const newSectionsData = {
       ...sectionsData,
       [activeSection]: activeSectionData,
     };
 
-    console.log(newSectionsData);
-
     setSectionsData(newSectionsData);
+
+    console.log(newSectionsData);
 
     if (setShowForm) setShowForm(false);
   }
 
   function removeData(data) {
     const filteredSectionData = sectionsData[activeSection].filter(
-      (info) => info != data,
+      (info) => info.id != data.id,
     );
     const newSectionData = {
       ...sectionsData,
@@ -58,7 +68,13 @@ export default function DetailsData({
         <Form
           activeSection={activeSection}
           saveData={saveData}
-          entriesData={isEditing ? isEditing : sectionsData[activeSection][0]}
+          entriesData={
+            isEditing
+              ? isEditing
+              : activeSection == "personal"
+              ? sectionsData[activeSection][0]
+              : null
+          }
         />
       ) : (
         <>

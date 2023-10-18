@@ -115,6 +115,10 @@ body {
   position: relative;
 
   box-shadow: 0 0 1rem var(--primary);
+
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.2rem + 0.5%);
 }
 
 /* Details section header */
@@ -174,9 +178,12 @@ body {
 }
 
 .details-data>.entry-data {
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
+  
+  grid-template-columns: 1fr auto;
+
   gap: 1rem;
 
   width: 100%;
@@ -192,6 +199,7 @@ body {
   text-align: center;
   gap: 0.5rem;
 
+  align-self: start;
 }
 
 .entry-data>.data-wrapper {
@@ -295,13 +303,17 @@ body {
 .curriculum-preview {
   box-sizing: content-box;
 
-  aspect-ratio: 1 / 1.5;
+  max-width: 220px;
+  max-height: 300px;
 
-  max-width: 300px;
-
+  background-color: white;
   border: 1px solid var(--primary);
 
   position: relative;
+
+  overflow: hidden;
+
+  margin: 0 auto;
 }
 
 .curriculum-preview:hover {
@@ -309,7 +321,7 @@ body {
 }
 
 .curriculum-preview > .curriculum {
-  scale: 0.375;
+  scale: 0.275;
 
   transform-origin: top left;
 }
@@ -377,4 +389,12 @@ body {
 .experience-cv .job-details-cv  > *,
 .education-cv .education-details-cv > *{
   margin: 0;
+}
+
+.curriculum .skills-info ul {
+  margin: 0;
+  padding-left: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }

@@ -9,6 +9,7 @@ export default function App() {
     personal: [],
     education: [],
     experience: [],
+    skills: [],
   });
   const [activeSection, setActiveSection] = useState("content");
 
@@ -18,14 +19,13 @@ export default function App() {
         activeSection={activeSection}
         setActiveSection={setActiveSection}
       />
+      <CurriculumPreview sectionsData={sectionsData} />
       {activeSection === "content" ? (
         <Details
           sectionsData={sectionsData}
           setSectionsData={setSectionsData}
         />
-      ) : (
-        <CurriculumPreview sectionsData={sectionsData} />
-      )}
+      ) : null}
     </div>
   );
 }
