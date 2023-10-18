@@ -64,7 +64,7 @@ export default function DetailsData({
 
   return (
     <div className="details-data">
-      {activeSection === "personal" || showForm ? (
+      {showForm ? (
         <Form
           activeSection={activeSection}
           saveData={saveData}
