@@ -3,6 +3,7 @@ import Details from "./components/DetailsSection/Details";
 import CurriculumPreview from "./components/CVSection/CurriculumPreview";
 import "./styles/App.css";
 import { useState } from "react";
+import Curriculum from "./components/CVSection/Curriculum";
 
 export default function App() {
   const [sectionsData, setSectionsData] = useState({
@@ -20,6 +21,7 @@ export default function App() {
         setActiveSection={setActiveSection}
       />
       <CurriculumPreview sectionsData={sectionsData} />
+      <Curriculum sectionsData={sectionsData} />
       {activeSection === "content" ? (
         <Details
           sectionsData={sectionsData}
