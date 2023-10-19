@@ -1,4 +1,4 @@
-import ConfigurationButtons from "./components/ConfigurationButtons";
+import ConfigurationButtons from "./components/ConfigurationSection/ConfigurationButtons";
 import Details from "./components/DetailsSection/Details";
 import CurriculumPreview from "./components/CVSection/CurriculumPreview";
 import "./styles/App.css";
@@ -12,22 +12,13 @@ export default function App() {
     experience: [],
     skills: [],
   });
-  const [activeSection, setActiveSection] = useState("content");
 
   return (
     <div className="main">
-      <ConfigurationButtons
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-      />
+      <ConfigurationButtons setSectionsData={setSectionsData} />
       <CurriculumPreview sectionsData={sectionsData} />
       <Curriculum sectionsData={sectionsData} />
-      {activeSection === "content" ? (
-        <Details
-          sectionsData={sectionsData}
-          setSectionsData={setSectionsData}
-        />
-      ) : null}
+      <Details sectionsData={sectionsData} setSectionsData={setSectionsData} />
     </div>
   );
 }
